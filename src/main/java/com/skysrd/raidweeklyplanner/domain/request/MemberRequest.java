@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class MemberRequest {
     private String username;
     private String password;
+
     public Member toMember(PasswordEncoder passwordEncoder) {
         return Member.builder()
                 .username(username)
