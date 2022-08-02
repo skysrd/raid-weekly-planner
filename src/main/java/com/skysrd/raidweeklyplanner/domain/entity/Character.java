@@ -10,12 +10,11 @@ import javax.persistence.*;
 
 @Getter
 @Entity
-@Table(name = "CHATACTER")
+@Table(name = "CHARACTERS")
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class Character extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "character_id")
     private Long id;
 

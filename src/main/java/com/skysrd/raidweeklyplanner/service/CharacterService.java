@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.TransactionScoped;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,9 +16,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class CharacterService {
-    CharacterRepository characterRepository;
-    MemberRepository memberRepository;
+    private final CharacterRepository characterRepository;
+    private final MemberRepository memberRepository;
 
+    @Transactional
     public Long register(CharacterRegisterRequest characterRegisterRequest) {
         return characterRepository.save(characterRegisterRequest.toCharacter()).getId();
     }

@@ -3,6 +3,7 @@ package com.skysrd.raidweeklyplanner.domain.response;
 import com.skysrd.raidweeklyplanner.domain.entity.Character;
 import com.skysrd.raidweeklyplanner.domain.entity.Content;
 import com.skysrd.raidweeklyplanner.domain.entity.Member;
+import com.skysrd.raidweeklyplanner.repository.MemberRepository;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -14,7 +15,7 @@ import javax.persistence.ManyToOne;
 @Getter
 public class CharacterResponse {
     private Long id;
-    private Member parentMember;
+    private MemberResponse memberResponse;
     private String name;
     private double level;
     private String type;
@@ -22,7 +23,7 @@ public class CharacterResponse {
     @Builder
     public CharacterResponse(Long id, Member member, String name, double level, String type) {
         this.id = id;
-        this.parentMember = member;
+        this.memberResponse = MemberResponse.toResponse(member);
         this.name = name;
         this.level = level;
         this.type = type;
