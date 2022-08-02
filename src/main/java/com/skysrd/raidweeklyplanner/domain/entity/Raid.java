@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "CHARACTER_CONTENT")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CharacterContent extends BaseEntity {
+public class Raid extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,17 +31,9 @@ public class CharacterContent extends BaseEntity {
     private Boolean status;
 
     @Builder
-    public CharacterContent(Character character, Content content) {
+    public Raid(Character character, Content content) {
         this.character = character;
         this.content = content;
-        this.status=false;
-    }
-
-    public void checkRaid() {
         this.status=true;
-    }
-
-    public void uncheckRaid() {
-        this.status=false;
     }
 }
