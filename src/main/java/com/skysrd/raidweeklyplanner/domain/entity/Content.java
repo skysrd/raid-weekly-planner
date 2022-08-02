@@ -2,6 +2,7 @@ package com.skysrd.raidweeklyplanner.domain.entity;
 
 import com.skysrd.raidweeklyplanner.common.BaseEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -29,4 +30,19 @@ public class Content extends BaseEntity {
 
     @Column(name = "content_reward")
     private int reward;
+
+    @Builder
+    public Content(String name, int minLevel, int maxLevel, int reward) {
+        this.name = name;
+        this.minLevel = minLevel;
+        this.maxLevel = maxLevel;
+        this.reward = reward;
+    }
+
+    public void updateContent(String name, int minLevel, int maxLevel, int reward) {
+        this.name=name;
+        this.minLevel=minLevel;
+        this.maxLevel=maxLevel;
+        this.reward=reward;
+    }
 }
