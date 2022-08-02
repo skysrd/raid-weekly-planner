@@ -34,7 +34,9 @@ public class ContentService {
     }
 
     public List<ContentResponse> getContents() {
-        return contentRepository.findAll().stream().map(ContentResponse::toResponse).collect(Collectors.toList());
+        return contentRepository.findAll().stream()
+                .map(ContentResponse::toResponse)
+                .collect(Collectors.toList());
     }
 
     public ContentResponse getContent(Long contentId) {

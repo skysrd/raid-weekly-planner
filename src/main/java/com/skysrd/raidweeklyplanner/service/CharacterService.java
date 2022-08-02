@@ -1,15 +1,15 @@
 package com.skysrd.raidweeklyplanner.service;
 
-import com.skysrd.raidweeklyplanner.domain.entity.Character;
 import com.skysrd.raidweeklyplanner.domain.request.CharacterRegisterRequest;
+import com.skysrd.raidweeklyplanner.domain.response.CharacterResponse;
 import com.skysrd.raidweeklyplanner.repository.CharacterRepository;
 import com.skysrd.raidweeklyplanner.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -18,17 +18,21 @@ public class CharacterService {
     CharacterRepository characterRepository;
     MemberRepository memberRepository;
 
-    public Character register(CharacterRegisterRequest characterRegisterRequest) {
-        return characterRepository.save(characterRegisterRequest.toCharacter());
+    public Long register(CharacterRegisterRequest characterRegisterRequest) {
+        return characterRepository.save(characterRegisterRequest.toCharacter()).getId();
     }
 
-    public List<Character> getCharacters() {
-        return characterRepository.findAll();
+    public List<CharacterResponse> getCharacters() {
+        return characterRepository.findAll().stream()
+                .map(CharacterResponse::toResponse)
+                .collect(Collectors.toList());
     }
 
-    public List<Character> getCharacterByUsername(String username) {
+    public List<CharacterResponse> getCharacterByUsername(String username) {
         return characterRepository.findByParentMember(
                 memberRepository.findByUsername(username)
-                        .orElseThrow(()-> new UsernameNotFoundException("사용자 이름을 찾을 수 없습니다.")));
+                        .orElseThrow(()->new IllegalArgumentException("Character Not Found")))
+                .stream().map(CharacterResponse::toResponse)
+                .collect(Collectors.toList());
     }
 }
