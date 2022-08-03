@@ -9,14 +9,18 @@ import lombok.Getter;
 public class ContentResponse {
     private Long id;
     private String name;
-    private int minLevel;
-    private int maxLevel;
-    private int reward;
+    private Integer phase;
+    private String difficulty;
+    private Integer minLevel;
+    private Integer maxLevel;
+    private Integer reward;
 
     @Builder
-    public ContentResponse(Long id, String name, int minLevel, int maxLevel, int reward) {
+    public ContentResponse(Long id, String name, Integer phase, String difficulty, int minLevel, int maxLevel, int reward) {
         this.id = id;
         this.name = name;
+        this.phase = phase;
+        this.difficulty = difficulty;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
         this.reward = reward;
@@ -26,6 +30,8 @@ public class ContentResponse {
         return ContentResponse.builder()
                 .id(content.getId())
                 .name(content.getName())
+                .phase(content.getPhase())
+                .difficulty(content.getDifficulty())
                 .minLevel(content.getMinLevel())
                 .maxLevel(content.getMaxLevel())
                 .reward(content.getReward())

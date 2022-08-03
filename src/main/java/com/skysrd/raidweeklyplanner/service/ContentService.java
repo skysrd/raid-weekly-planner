@@ -24,7 +24,7 @@ public class ContentService {
     @Transactional
     public void updateContent(Long contentId, ContentRequest contentRequest) {
         contentRepository.findById(contentId)
-                .orElseThrow(()-> new IllegalArgumentException("Content를 찾을 수 없습니다."))
+                .orElseThrow(()-> new IllegalArgumentException("Content not found"))
                 .updateContent(
                         contentRequest.getName(),
                         contentRequest.getMinLevel(),
@@ -40,8 +40,8 @@ public class ContentService {
     }
 
     public ContentResponse getContent(Long contentId) {
-        return contentRepository.findById(contentId)
-                .map(ContentResponse::toResponse)
-                .orElseThrow(()->new IllegalArgumentException("Content not found"));
+        return ContentResponse.toResponse(
+                contentRepository.findById(contentId)
+                .orElseThrow(()->new IllegalArgumentException("Content not found")));
     }
 }

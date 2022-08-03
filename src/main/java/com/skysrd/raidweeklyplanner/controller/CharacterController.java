@@ -17,7 +17,7 @@ public class CharacterController {
         return ResponseEntity.ok(characterService.register(characterRegisterRequest));
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<?> getCharacters() {
         return ResponseEntity.ok(characterService.getCharacters());
     }

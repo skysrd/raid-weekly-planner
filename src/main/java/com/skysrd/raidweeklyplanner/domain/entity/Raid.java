@@ -34,6 +34,6 @@ public class Raid extends BaseEntity {
     public Raid(Character character, Content content) {
         this.character = character;
         this.content = content;
-        this.status=true;
+        this.status = true;
     }
 }

@@ -23,7 +23,7 @@ public class RaidService {
     LocalDateTime nextInitDay = lastInitDay.plusDays(7);
 
     public List<RaidResponse> getRaids() {
-        if(LocalDateTime.now().isAfter(nextInitDay)) {
+        while(LocalDateTime.now().isAfter(nextInitDay)) {
             lastInitDay=nextInitDay;
             nextInitDay.plusDays(7);
         }

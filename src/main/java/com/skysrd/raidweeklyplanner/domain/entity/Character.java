@@ -26,7 +26,7 @@ public class Character extends BaseEntity {
     private String name;
 
     @Column(name = "character_level")
-    private double level;
+    private Double level;
 
     @Column(name = "character_type")
     private String type;

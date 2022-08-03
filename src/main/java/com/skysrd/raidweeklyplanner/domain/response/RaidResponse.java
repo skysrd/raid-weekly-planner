@@ -13,12 +13,12 @@ import javax.persistence.ManyToOne;
 
 public class RaidResponse {
     private Long id;
-    private Character character;
-    private Content content;
+    private CharacterResponse character;
+    private ContentResponse content;
     private Boolean status;
 
     @Builder
-    public RaidResponse(Long id, Character character, Content content, Boolean status) {
+    public RaidResponse(Long id, CharacterResponse character, ContentResponse content, Boolean status) {
         this.id=id;
         this.character=character;
         this.content=content;
@@ -28,8 +28,8 @@ public class RaidResponse {
     public static RaidResponse toResponse(Raid raid) {
         return RaidResponse.builder()
                 .id(raid.getId())
-                .character(raid.getCharacter())
-                .content(raid.getContent())
+                .character(CharacterResponse.toResponse(raid.getCharacter()))
+                .content(ContentResponse.toResponse(raid.getContent()))
                 .status(raid.getStatus())
                 .build();
     }

@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -22,18 +23,26 @@ public class Content extends BaseEntity {
     @Column(name = "content_name")
     private String name;
 
+    @Column(name = "content_phase")
+    private Integer phase;
+
+    @Column(name = "content_difficulty")
+    private String difficulty;
+
     @Column(name = "content_min_level")
-    private int minLevel;
+    private Integer minLevel;
 
     @Column(name = "content_max_level")
-    private int maxLevel;
+    private Integer maxLevel;
 
     @Column(name = "content_reward")
-    private int reward;
+    private Integer reward;
 
     @Builder
-    public Content(String name, int minLevel, int maxLevel, int reward) {
+    public Content(String name, Integer phase, String difficulty, int minLevel, int maxLevel, int reward) {
         this.name = name;
+        this.phase = phase;
+        this.difficulty = difficulty;
         this.minLevel = minLevel;
         this.maxLevel = maxLevel;
         this.reward = reward;
