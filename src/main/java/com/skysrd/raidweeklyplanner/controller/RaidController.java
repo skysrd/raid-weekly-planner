@@ -31,4 +31,9 @@ public class RaidController {
     public void deleteRaid(@PathVariable Long raidId) {
         raidService.deleteRaid(raidId);
     }
+
+    @GetMapping("/{characterId}")
+    public ResponseEntity<?> getRaidsByCharacter(@PathVariable Long characterId) {
+        return ResponseEntity.ok(raidService.getRaidsByCharacter(characterId));
+    }
 }

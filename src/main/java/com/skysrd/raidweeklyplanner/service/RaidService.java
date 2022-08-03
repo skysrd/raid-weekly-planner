@@ -2,6 +2,7 @@ package com.skysrd.raidweeklyplanner.service;
 
 import com.skysrd.raidweeklyplanner.domain.request.RaidRequest;
 import com.skysrd.raidweeklyplanner.domain.response.RaidResponse;
+import com.skysrd.raidweeklyplanner.repository.CharacterRepository;
 import com.skysrd.raidweeklyplanner.repository.RaidRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @Transactional(readOnly = true)
 public class RaidService {
     private final RaidRepository raidRepository;
+    private final CharacterRepository characterRepository;
     LocalDateTime lastInitDay = LocalDateTime.of(2022, 8, 3, 6,0);
     LocalDateTime nextInitDay = lastInitDay.plusDays(7);
 
@@ -43,5 +45,13 @@ public class RaidService {
 
     public void deleteRaid(Long raidId) {
         raidRepository.deleteById(raidId);
+    }
+
+    public List<RaidResponse> getRaidsByCharacter(Long characterId) {
+        return raidRepository.findByCharacter(
+                characterRepository.findById(characterId)
+                        .orElseThrow(() -> new IllegalArgumentException("Character 정보를 찾을 수 없습니다."))).stream()
+                .map(RaidResponse::toResponse)
+                .collect(Collectors.toList());
     }
 }
