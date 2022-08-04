@@ -39,10 +39,12 @@ public class RaidService {
                 .orElseThrow(()->new IllegalArgumentException("Raid Not Found"));
     }
 
+    @Transactional
     public Long createRaid(RaidRequest raidRequest) {
         return raidRepository.save(raidRequest.toRaid()).getId();
     }
 
+    @Transactional
     public void deleteRaid(Long raidId) {
         raidRepository.deleteById(raidId);
     }

@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RaidRequest {
-    private Character character;
-    private Content content;
+    private Character characterId;
+    private Content contentId;
 
     public Raid toRaid() {
         return Raid.builder()
-                .character(character)
-                .content(content)
+                .character(characterId)
+                .content(contentId)
                 .build();
     }
 }

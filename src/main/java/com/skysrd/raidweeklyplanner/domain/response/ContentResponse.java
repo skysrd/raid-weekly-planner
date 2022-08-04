@@ -3,9 +3,12 @@ package com.skysrd.raidweeklyplanner.domain.response;
 import com.skysrd.raidweeklyplanner.domain.entity.Content;
 import com.skysrd.raidweeklyplanner.domain.request.ContentRequest;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Getter
+@Data
+@NoArgsConstructor
 public class ContentResponse {
     private Long id;
     private String name;

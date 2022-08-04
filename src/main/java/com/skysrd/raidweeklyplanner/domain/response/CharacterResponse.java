@@ -4,15 +4,15 @@ import com.skysrd.raidweeklyplanner.domain.entity.Character;
 import com.skysrd.raidweeklyplanner.domain.entity.Content;
 import com.skysrd.raidweeklyplanner.domain.entity.Member;
 import com.skysrd.raidweeklyplanner.repository.MemberRepository;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Getter
+@Data
+@NoArgsConstructor
 public class CharacterResponse {
     private Long id;
     private MemberResponse memberResponse;

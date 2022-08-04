@@ -4,13 +4,16 @@ import com.skysrd.raidweeklyplanner.common.enums.Authority;
 import com.skysrd.raidweeklyplanner.domain.entity.Content;
 import com.skysrd.raidweeklyplanner.domain.entity.Member;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-@Getter
+@Data
+@NoArgsConstructor
 public class MemberResponse {
     private long id;
     private String username;

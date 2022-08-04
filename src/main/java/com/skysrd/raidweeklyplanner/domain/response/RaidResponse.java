@@ -5,12 +5,16 @@ import com.skysrd.raidweeklyplanner.domain.entity.Content;
 import com.skysrd.raidweeklyplanner.domain.entity.Raid;
 import com.skysrd.raidweeklyplanner.service.RaidService;
 import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Data
+@NoArgsConstructor
 public class RaidResponse {
     private Long id;
     private CharacterResponse character;
