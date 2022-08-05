@@ -1,12 +1,10 @@
 package com.skysrd.raidweeklyplanner.controller;
 
-import lombok.Getter;
+import com.skysrd.raidweeklyplanner.domain.request.GroupRequest;
+import com.skysrd.raidweeklyplanner.service.GroupService;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.ResultSet;
 
 @RestController
 @RequestMapping("/group")
@@ -26,16 +24,16 @@ public class GroupController {
 
     @GetMapping("")
     public ResponseEntity<?> getGroups() {
-        return ResponseEntity.ok(groupService.getGroups);
+        return ResponseEntity.ok(groupService.getGroups());
     }
 
     @GetMapping("/{groupId}")
     public ResponseEntity<?> getGroup(@PathVariable Long groupId) {
-        return ResponseEntity.ok(groupService.getGroup);
+        return ResponseEntity.ok(groupService.getGroup(groupId));
     }
 
     @GetMapping("/details/{groupId}")
     public ResponseEntity<?> getGroupDetail(@PathVariable Long groupId) {
-        return ResponseEntity.ok(groupService.getGroupDetail);
+        return ResponseEntity.ok(groupService.getGroupDetail(groupId));
     }
 }
