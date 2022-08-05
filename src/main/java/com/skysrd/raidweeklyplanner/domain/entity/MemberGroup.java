@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "member_group")
+@Table(name = "MEMBER_GROUP")
 public class MemberGroup extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

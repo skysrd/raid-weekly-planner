@@ -5,6 +5,7 @@ import com.skysrd.raidweeklyplanner.domain.entity.MemberGroup;
 import com.skysrd.raidweeklyplanner.domain.request.GroupRequest;
 import com.skysrd.raidweeklyplanner.domain.response.GroupDetailResponse;
 import com.skysrd.raidweeklyplanner.domain.response.GroupResponse;
+import com.skysrd.raidweeklyplanner.domain.response.MemberGroupResponse;
 import com.skysrd.raidweeklyplanner.repository.GroupRepository;
 import com.skysrd.raidweeklyplanner.repository.MemberGroupRepository;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +44,9 @@ public class GroupService {
     }
 
     public GroupDetailResponse getGroupDetail(Long groupId) {
-        return null;
+        Group group = groupRepository.findById(groupId)
+                .orElseThrow(() -> new IllegalArgumentException());
+        return GroupDetailResponse.toResponse(
+                group, memberGroupRepository.findAllByGroup(group));
     }
 }
