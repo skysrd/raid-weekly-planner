@@ -13,8 +13,8 @@ public class CharacterController {
     private final CharacterService characterService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody CharacterRegisterRequest characterRegisterRequest) {
-        return ResponseEntity.ok(characterService.register(characterRegisterRequest));
+    public ResponseEntity<?> createCharacter(@RequestBody CharacterRegisterRequest characterRegisterRequest) {
+        return ResponseEntity.ok(characterService.createCharacter(characterRegisterRequest));
     }
 
     @GetMapping("")

@@ -20,7 +20,7 @@ public class CharacterService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public Long register(CharacterRegisterRequest characterRegisterRequest) {
+    public Long createCharacter(CharacterRegisterRequest characterRegisterRequest) {
         return characterRepository.save(characterRegisterRequest.toCharacter()).getId();
     }
 
