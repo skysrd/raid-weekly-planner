@@ -20,11 +20,11 @@ public class MemberGroup extends BaseEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "member_id")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "group_id")
+    @JoinColumn(name = "group_id")
     private Group group;
 
     @Builder
